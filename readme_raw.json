@@ -1,0 +1,20 @@
+{
+  "code": 200,
+  "data": {
+    "description": "",
+    "html": "<html><head><meta name=\"color-scheme\" content=\"light dark\"></head><body><pre style=\"word-wrap: break-word; white-space: pre-wrap;\"># ATC Aman\n\n**A single-player, real-time air traffic control simulation for Asmara\nInternational Airport (HHAS), Eritrea.**\n\nATC Aman is a hobby project, developed for my only brother. You sit in the\ntower at Asmara and work arrivals and departures across three controller\nstations — Ground, Tower, and Approach — by clicking aircraft on the radar\nand issuing commands, exactly the way a real shift never quite goes.\n\n---\n\n## ⚠️ Simulation only\n\nATC Aman is a game. It is **not** suitable for real-world aviation,\nnavigation, flight planning, or ATC training. Procedures, frequencies, and\nairport data are simplified and may be inaccurate or out of date.\n\n## 🔒 Privacy\n\n> ## **NO COLLECTION OF DATA. NO NETWORK CALLS.**\n>\n> **This application collects no personal data, contains no telemetry or\n> analytics, and makes no network connections — ever. All progress (scores,\n> career XP) is stored locally on your machine and never leaves it.**\n\n---\n\n## Features\n\n- **Real-time simulation** of arrivals and departures at HHAS: full flight\n  lifecycle from spawn through approach, landing, taxi, gate — or taxi-out,\n  takeoff, and departure handoff\n- **Three controller stations** (Ground / Tower / Approach) with\n  station-scoped command sets and ICAO phraseology, spoken ATC + pilot\n  readbacks (offline text-to-speech, captions always available)\n- **Play the stations you want** — hand any station to a deterministic AI\n  controller and keep the ones you enjoy; only your own aircraft are scored\n- **PixiJS radar scope** with the real airport diagram, range rings, data\n  blocks, trails, zoom/pan, and a ruler tool\n- **Scoring across five dimensions** (Safety, Efficiency, Communication,\n  Procedure, Awareness) with S–D grades and a persistent career (XP, levels)\n- **Tutorials** covering UI basics, ATC fundamentals, incident handling, and\n  each station, plus an in-game spotlight walkthrough\n- **Difficulty presets**, pause menu, keyboard shortcuts, and a command\n  text input for purists\n\n## Controls (essentials)\n\n| Input | Action |\n|-------|--------|\n| Click aircraft | Select |\n| Command buttons (GND/TWR/APP tabs) | Issue clearances |\n| `/` | Focus text command input |\n| Space | Pause / pause menu |\n| Tab | Cycle aircraft |\n| M | Mute audio |\n| R | Ruler tool |\n| G / O / T | Guide / mission tracker / tutorial |\n| Wheel / +/- | Radar zoom |\n\n## Running from source\n\n```bash\nnpm install\nnpm run dev        # development (Vite HMR + Electron)\nnpm test           # test suite (Vitest)\nnpm run package    # build a distributable into release/\n```\n\nWindows installer from Linux: `npm run build && npx electron-builder --win --x64`\n\n## Tech\n\nElectron 35 · TypeScript · React 19 · PixiJS 8 · Vite 6 · Vitest\n\n## License\n\n[MIT](LICENSE) © 2026 Nahom Daniel Negash.\nBundled open-source components are listed in\n[THIRD-PARTY-NOTICES.txt](THIRD-PARTY-NOTICES.txt).\n\n## Authors\n\n- **Nahom Daniel Negash**\n- **Claude (Anthropic)** — AI pair programmer\n</pre></body></html>",
+    "httpStatus": 200,
+    "httpStatusText": "",
+    "title": "",
+    "url": "https://raw.githubusercontent.com/nhmdnl/ATC-TS-Aman/main/README.md",
+    "usage": {
+      "tokens": 779
+    }
+  },
+  "meta": {
+    "usage": {
+      "tokens": 779
+    }
+  },
+  "status": 20000
+}
