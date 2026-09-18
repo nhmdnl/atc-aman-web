@@ -33,6 +33,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { FeedbackSection } from "@/components/feedback-section";
 import { IntroVideo } from "@/components/intro-video";
 import { trackEvent } from "@/lib/analytics";
+import { SiteDisclaimer } from "@/components/site-disclaimer";
 
 /* ------------------------------------------------------------------ */
 /*  Reusable animation wrapper                                        */
@@ -271,6 +272,12 @@ export default function HomePage() {
             </a>
             <a href="#download" className="hover:text-radar transition-colors">
               Download
+            </a>
+            <a href="/airport/asmara-hhas" className="hover:text-radar transition-colors">
+              Airport
+            </a>
+            <a href="/press" className="hover:text-radar transition-colors">
+              Press
             </a>
             <a href="#feedback" className="hover:text-radar transition-colors">
               Feedback
@@ -929,23 +936,29 @@ export default function HomePage() {
 
       {/* ======================== FOOTER ======================== */}
       <footer className="border-t border-radar-border py-10 px-6 mt-auto">
-        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2 text-sm text-muted-foreground">
-            <Radar className="w-4 h-4 text-radar/60" />
-            <span className="font-mono">ATC Aman</span>
-            <span className="text-muted-foreground/40">|</span>
-            <span>MIT License</span>
-          </div>
-          <div className="flex items-center gap-4 text-sm text-muted-foreground">
-            <span>By Nahom Daniel Negash</span>
-            <a
-              href="https://github.com/nhmdnl/ATC-TS-Aman"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-radar transition-colors"
-            >
-              <Github className="w-4 h-4" />
-            </a>
+        <div className="max-w-6xl mx-auto flex flex-col gap-6">
+          <SiteDisclaimer className="max-w-3xl" />
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <Radar className="w-4 h-4 text-radar/60" />
+              <span className="font-mono">ATC Aman</span>
+              <span className="text-muted-foreground/40">|</span>
+              <span>MIT License</span>
+              <span className="text-muted-foreground/40">|</span>
+              <a href="/airport/asmara-hhas" className="hover:text-radar transition-colors">Airport</a>
+              <a href="/press" className="hover:text-radar transition-colors">Press</a>
+            </div>
+            <div className="flex items-center gap-4 text-sm text-muted-foreground">
+              <span>By Nahom Daniel Negash</span>
+              <a
+                href="https://github.com/nhmdnl/ATC-TS-Aman"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-radar transition-colors"
+              >
+                <Github className="w-4 h-4" />
+              </a>
+            </div>
           </div>
         </div>
       </footer>

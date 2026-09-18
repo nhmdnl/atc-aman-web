@@ -4,8 +4,12 @@ import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { ClarityScript } from "@/components/analytics/clarity-script";
-
-const SITE_URL = "https://atc-aman-web.vercel.app";
+import {
+  SITE_URL,
+  buildRootJsonLd,
+  jsonLdScript,
+  DISCLAIMER,
+} from "@/lib/site";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -20,30 +24,33 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "ATC Aman — Air Traffic Control Simulation for Asmara",
+    default: "ATC Aman — Asmara (HHAS) Air Traffic Control Simulator",
     template: "%s | ATC Aman",
   },
   description:
-    "ATC Aman is a free, single-player air traffic control simulation for Asmara International Airport (HHAS), Eritrea. Work Ground, Tower, and Approach positions in real time — radar scope, voice ATIS, scoring, and realistic arrival management.",
+    "Free Windows download: single-player offline ATC simulation of Asmara International Airport (HHAS), Eritrea. Work Ground, Tower, and Approach in real time — radar scope, spoken phraseology, and session scoring. Entertainment only — not for training.",
   keywords: [
-    "ATC",
-    "air traffic control",
-    "arrival manager",
-    "AMAN",
-    "simulation",
-    "Asmara",
-    "Eritrea",
-    "HHAS",
-    "approach control",
-    "radar",
-    "flight simulator companion",
+    "ATC simulator",
+    "air traffic control simulator",
+    "air traffic control game",
+    "ATC game PC",
+    "offline ATC simulator",
+    "Asmara International Airport simulator",
+    "HHAS ATC",
+    "Asmara airport game",
+    "approach control simulator",
+    "tower control simulator",
     "aviation game",
+    "Eritrea",
   ],
   authors: [{ name: "Nahom Daniel Negash" }],
+  alternates: {
+    canonical: SITE_URL,
+  },
   openGraph: {
-    title: "ATC Aman — Air Traffic Control Simulation for Asmara",
+    title: "ATC Aman — Asmara (HHAS) Air Traffic Control Simulator",
     description:
-      "Sit in the tower at Asmara International Airport (HHAS) and work real-time arrivals and departures across Ground, Tower, and Approach. Free to download on Windows.",
+      "Sit in the tower at Asmara International Airport (HHAS). Free Windows download — offline, single-player, real-time Ground / Tower / Approach. Entertainment only.",
     url: SITE_URL,
     siteName: "ATC Aman",
     type: "website",
@@ -59,9 +66,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "ATC Aman — Air Traffic Control Simulation for Asmara",
+    title: "ATC Aman — Asmara (HHAS) Air Traffic Control Simulator",
     description:
-      "A free, real-time ATC simulation for Asmara International Airport (HHAS), Eritrea. Ground, Tower & Approach in your browser of choice — download for Windows.",
+      "Free Windows ATC sim of Asmara International (HHAS). Offline, single-player Ground / Tower / Approach. Entertainment only — not for training.",
     images: ["/og-image.png"],
   },
   robots: {
@@ -78,6 +85,9 @@ export const metadata: Metadata = {
     ],
   },
   manifest: "/manifest.webmanifest",
+  other: {
+    "entertainment-disclaimer": DISCLAIMER,
+  },
 };
 
 export const viewport: Viewport = {
@@ -91,11 +101,17 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = buildRootJsonLd();
+
   return (
     <html lang="en" className="dark">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: jsonLdScript(jsonLd) }}
+        />
         {children}
         <Toaster />
         <Analytics />
