@@ -31,6 +31,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { FeedbackSection } from "@/components/feedback-section";
+import { trackEvent } from "@/lib/analytics";
 
 /* ------------------------------------------------------------------ */
 /*  Reusable animation wrapper                                        */
@@ -326,6 +327,13 @@ export default function HomePage() {
                 href={release.installer.url}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() =>
+                  trackEvent("download_click", {
+                    location: "hero",
+                    version: release.version,
+                    size_mb: release.installer.sizeMB,
+                  })
+                }
               >
                 <Button
                   size="lg"
@@ -357,6 +365,7 @@ export default function HomePage() {
               href="https://github.com/nhmdnl/ATC-TS-Aman"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackEvent("github_click", { location: "hero" })}
             >
               <Button
                 variant="outline"
@@ -665,6 +674,13 @@ export default function HomePage() {
                       href={release.installer.url}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={() =>
+                        trackEvent("download_click", {
+                          location: "download_section",
+                          version: release.version,
+                          size_mb: release.installer.sizeMB,
+                        })
+                      }
                     >
                       <Button
                         size="lg"
@@ -823,6 +839,13 @@ export default function HomePage() {
                   href={release.installer.url}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() =>
+                    trackEvent("download_click", {
+                      location: "final_cta",
+                      version: release.version,
+                      size_mb: release.installer.sizeMB,
+                    })
+                  }
                 >
                   <Button
                     size="lg"
@@ -838,6 +861,12 @@ export default function HomePage() {
                   href="https://github.com/nhmdnl/ATC-TS-Aman/releases/latest"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() =>
+                    trackEvent("download_click", {
+                      location: "final_cta",
+                      version: "latest",
+                    })
+                  }
                 >
                   <Button
                     size="lg"
@@ -853,6 +882,7 @@ export default function HomePage() {
                 href="https://github.com/nhmdnl/ATC-TS-Aman"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackEvent("github_click", { location: "final_cta" })}
               >
                 <Button
                   variant="outline"
