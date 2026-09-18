@@ -1,12 +1,21 @@
 import type { MetadataRoute } from "next";
+import { SITE_URL } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const lastModified = new Date();
   return [
+    { url: SITE_URL, lastModified, changeFrequency: "weekly", priority: 1 },
     {
-      url: "https://atc-aman-web.vercel.app",
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 1,
+      url: `${SITE_URL}/airport/asmara-hhas`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${SITE_URL}/press`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.6,
     },
   ];
 }
