@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion, useInView, useScroll, useTransform } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import {
   Radar,
   Radio,
@@ -31,6 +31,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { FeedbackSection } from "@/components/feedback-section";
+import { IntroVideo } from "@/components/intro-video";
 import { trackEvent } from "@/lib/analytics";
 
 /* ------------------------------------------------------------------ */
@@ -229,12 +230,12 @@ export default function HomePage() {
       .catch(() => {})
       .finally(() => setLoading(false));
   }, []);
-  const { scrollYProgress } = useScroll();
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.15], [1, 0]);
-  const heroScale = useTransform(scrollYProgress, [0, 0.15], [1, 0.97]);
 
   return (
     <div className="min-h-screen flex flex-col bg-radar-bg text-foreground overflow-x-hidden scanline-overlay grid-bg">
+      {/* ======================== INTRO GREETING VIDEO ======================== */}
+      <IntroVideo targetId="hero-content" />
+
       {/* ======================== NAV ======================== */}
       <header className="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-radar-bg/70 border-b border-radar-border">
         <nav className="max-w-6xl mx-auto flex items-center justify-between px-6 py-3">
@@ -245,6 +246,17 @@ export default function HomePage() {
             </span>
           </div>
           <div className="hidden sm:flex items-center gap-6 text-sm text-muted-foreground">
+            <a
+              href="#intro"
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById("intro")?.scrollIntoView({ behavior: "smooth" });
+              }}
+              className="hover:text-radar transition-colors flex items-center gap-1.5"
+            >
+              <Play className="w-3 h-3 text-radar" />
+              Intro
+            </a>
             <a href="#features" className="hover:text-radar transition-colors">
               Features
             </a>
@@ -282,8 +294,8 @@ export default function HomePage() {
       </header>
 
       {/* ======================== HERO ======================== */}
-      <motion.section
-        style={{ opacity: heroOpacity, scale: heroScale }}
+      <section
+        id="hero-content"
         className="relative flex-1 flex flex-col items-center justify-center text-center px-6 pt-28 pb-20 min-h-[100vh]"
       >
         <FadeIn delay={0.1}>
@@ -376,6 +388,17 @@ export default function HomePage() {
                 View on GitHub
               </Button>
             </a>
+            <Button
+              variant="ghost"
+              size="lg"
+              onClick={() => {
+                document.getElementById("intro")?.scrollIntoView({ behavior: "smooth" });
+              }}
+              className="text-muted-foreground hover:text-radar hover:bg-radar/10 gap-2 px-6"
+            >
+              <Play className="w-4 h-4 text-radar" />
+              Watch Intro
+            </Button>
           </div>
         </FadeIn>
 
@@ -392,7 +415,7 @@ export default function HomePage() {
         >
           <ChevronDown className="w-6 h-6 text-muted-foreground/40" />
         </motion.div>
-      </motion.section>
+      </section>
 
       {/* ======================== FEATURES ======================== */}
       <section id="features" className="relative py-24 sm:py-32 px-6">
